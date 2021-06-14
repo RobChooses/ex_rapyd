@@ -10,6 +10,3 @@ config :ex_rapyd,
   base_url: System.get_env("RAPYD_BASE_URL", "https://sandboxapi.rapyd.net/v1"),
   secret_key: System.fetch_env!("RAPYD_SECRET_KEY"),
   access_key: System.fetch_env!("RAPYD_ACCESS_KEY")
-
-  
-
