@@ -25,7 +25,7 @@ defmodule ExRapyd do
 
   require Logger
 
-  def client(%{path: path, http_method: http_method, body: body} = options)
+  def client(%{path: path, http_method: http_method, body: body} = _settings, options \\ [])
     when is_binary(http_method) and is_binary(path) do
     defaults = %{
       base_url: Application.get_env(:ex_rapyd, :base_url),

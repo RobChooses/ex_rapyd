@@ -12,9 +12,9 @@ defmodule ExRaypd.Resource.Country do
     {:ok, response}
 
   """
-  def list() do
+  def list(options \\ []) do
     path = "/data/countries"
-    client = ExRapyd.client(%{http_method: "get", path: path, body: ""})
+    client = ExRapyd.client(%{http_method: "get", path: path, body: ""}, options)
     Tesla.get(client, path)
   end
 end
