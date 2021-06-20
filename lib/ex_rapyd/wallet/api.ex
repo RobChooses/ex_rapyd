@@ -22,4 +22,10 @@ defmodule ExRapyd.Wallet.API do
     Tesla.post(client, path, wallet)
   end
 
+  def get_balance(wallet_id, options \\ []) when is_binary(wallet_id) do
+    path = "/user/#{wallet_id}/accounts"
+    client = ExRapyd.client(%{http_method: "get", path: path, body: ""}, options)
+    Tesla.get(client, path)
+  end
+
 end
