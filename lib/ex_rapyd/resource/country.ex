@@ -1,4 +1,4 @@
-defmodule ExRaypd.Resource.Country do
+defmodule ExRapyd.Resource.Country do
   @moduledoc """
   Elixir wrapper for the Rapyd API - Resource Methods - Country API
   """
