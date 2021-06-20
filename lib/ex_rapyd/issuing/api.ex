@@ -10,7 +10,7 @@ defmodule ExRapyd.Issuing.API do
 
   ## Example
 
-    iex> issue_body = %ExRapyd.Issuing{country: "GB", currency: "GBP", ewallet_rapyd_id: "ewallet_202106140546", description: "", merchant_reference_id: ""}
+    iex> issue_body = %ExRapyd.Issuing{country: "GB", currency: "GBP", ewallet: "ewallet_202106140546", description: "", merchant_reference_id: ""}
     iex> ExRapyd.Issuing.API.issue_bank_account(issue_body)
     {:ok, response}
 
