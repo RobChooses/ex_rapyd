@@ -46,9 +46,11 @@ defmodule ExRapyd do
     salt = create_salt()
     timestamp = create_timestamp()
 
-    Logger.info "#### Access key: #{access_key}"
-    Logger.info "#### Secret key: #{secret_key}"
-    Logger.info "#### Path: #{path}"
+    Logger.debug "#### Access key: #{access_key}"
+    Logger.debug "#### Secret key: #{secret_key}"
+    Logger.debug "#### Path: #{path}"
+    Logger.debug "#### Salt: #{salt}"
+    Logger.debug "#### Timestamp: #{timestamp}"
     
     # Signature is hash of a concatenation of specific strings according to the formula according to
     # https://docs.rapyd.net/build-with-rapyd/reference/message-security#request-signatures
@@ -58,6 +60,8 @@ defmodule ExRapyd do
     mac = :crypto.mac(:hmac, :sha256, secret_key, to_sign) |> Base.encode16(case: :lower)
 
     signature = Base.url_encode64(mac)
+
+    Logger.debug "#### Signature: #{signature}"
 
     middleware = [
       {Tesla.Middleware.BaseUrl, base_url},
