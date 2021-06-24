@@ -4,7 +4,7 @@ defmodule ExRapyd.Issuing do
   """
   use TypedStruct
 
-  # Rapyd Issuing message bbody object
+  # Rapyd Issuing message body object
   @derive Jason.Encoder
   typedstruct do
     field :country, String.t(), enforce: true
@@ -14,4 +14,3 @@ defmodule ExRapyd.Issuing do
     field :merchant_reference_id, String.t(), default: ""
   end
 end
-  
