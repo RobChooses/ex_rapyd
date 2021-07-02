@@ -17,7 +17,7 @@ defmodule ExRapyd.Collect.API do
                            complete_payment_url: "https://example.com/complete",
                            country: "GB",
                            currency: "GBP",
-                           ewallet_rapyd_id: "ewallet_xxxx"
+                           ewallet: "ewallet_xxxx"
                          }
     iex> ExRapyd.Collect.Checkout.create_checkout_page(checkout_body)
     {:ok, response}
@@ -30,4 +30,3 @@ defmodule ExRapyd.Collect.API do
     Tesla.post(client, path, checkout_body)
   end
 end
-  
