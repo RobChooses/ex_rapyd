@@ -40,7 +40,7 @@ defmodule ExRapyd.Wallet.API do
 
   ## Example
 
-    iex> ExRapyd.Wallet.API.get_balance("ewallet_202106140546")
+    iex> ExRapyd.Wallet.API.get_transactions("ewallet_202106140546")
     {:ok, response}
 
   """
