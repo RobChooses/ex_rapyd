@@ -3,8 +3,6 @@ defmodule ExRapyd.Wallet.API do
   Elixir wrapper for the Rapyd API - Wallet API
   """
 
-  alias ExRapyd.Wallet
-
   @doc """
   Create Personal Rapyd wallet
 
@@ -15,15 +13,39 @@ defmodule ExRapyd.Wallet.API do
     {:ok, response}
 
   """
-  def create_personal(%Wallet{} = wallet, options \\ []) do
+  def create_personal(wallet, options \\ []) do
     path = "/user"
     body = Jason.encode!(wallet)
     client = ExRapyd.client(%{http_method: "post", path: path, body: body}, options)
     Tesla.post(client, path, wallet)
   end
 
+  @doc """
+  Get balance(s) of a Rapyd wallet id
+
+  ## Example
+
+    iex> ExRapyd.Wallet.API.get_balance("ewallet_202106140546")
+    {:ok, response}
+
+  """
   def get_balance(wallet_id, options \\ []) when is_binary(wallet_id) do
     path = "/user/#{wallet_id}/accounts"
+    client = ExRapyd.client(%{http_method: "get", path: path, body: ""}, options)
+    Tesla.get(client, path)
+  end
+
+  @doc """
+  Get transactions of a Rapyd wallet id
+
+  ## Example
+
+    iex> ExRapyd.Wallet.API.get_balance("ewallet_202106140546")
+    {:ok, response}
+
+  """
+  def get_transactions(wallet_id, options \\ []) when is_binary(wallet_id) do
+    path = "/user/#{wallet_id}/transactions"
     client = ExRapyd.client(%{http_method: "get", path: path, body: ""}, options)
     Tesla.get(client, path)
   end
