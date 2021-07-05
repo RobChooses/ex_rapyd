@@ -50,4 +50,39 @@ defmodule ExRapyd.Wallet.API do
     Tesla.get(client, path)
   end
 
+  @doc """
+  Transfer funds between Rapyd wallets
+
+  ## Example
+
+    iex> transfer_funds_body = %{amount: "100", currency: "USD", destination_ewallet: "ewallet_202106140546",
+                                 source_ewallet: "ewallet_202106140500"}
+    iex> ExRapyd.Wallet.API.transfer_funds(transfer_funds_body)
+    {:ok, response}
+
+  """
+  def transfer_funds(transfer_funds_body, options \\ []) do
+    path = "/account/transfer"
+    body = Jason.encode!(transfer_funds_body)
+    client = ExRapyd.client(%{http_method: "post", path: path, body: body}, options)
+    Tesla.post(client, path, transfer_funds_body)
+  end
+
+  @doc """
+  Set Transfer Response for Transfer Funds request between Rapyd wallets
+
+  ## Example
+
+    iex> set_transfer_response_body = %{id: "5baf0079-dd49-11eb-b38b-02240218ee6d", status: "accept"}
+    iex> ExRapyd.Wallet.API.set_transfer_response(set_transfer_response_body)
+    {:ok, response}
+
+  """
+  def set_transfer_response(set_transfer_response_body, options \\ []) do
+    path = "/account/transfer/response"
+    body = Jason.encode!(set_transfer_response_body)
+    client = ExRapyd.client(%{http_method: "post", path: path, body: body}, options)
+    Tesla.post(client, path, set_transfer_response_body)
+  end
+
 end
