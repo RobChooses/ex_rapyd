@@ -51,6 +51,21 @@ defmodule ExRapyd.Wallet.API do
   end
 
   @doc """
+  Get details of a Rapyd wallet transaction id
+
+  ## Example
+
+    iex> ExRapyd.Wallet.API.get_transaction_detail("ewallet_202106140546", "wt_202106140547")
+    {:ok, response}
+
+  """
+  def get_transaction_detail(wallet_id, transaction_id, options \\ []) when is_binary(wallet_id) and is_binary(transaction_id) do
+    path = "/user/#{wallet_id}/transactions/#{transaction_id}"
+    client = ExRapyd.client(%{http_method: "get", path: path, body: ""}, options)
+    Tesla.get(client, path)
+  end
+
+  @doc """
   Transfer funds between Rapyd wallets
 
   ## Example
@@ -84,5 +99,7 @@ defmodule ExRapyd.Wallet.API do
     client = ExRapyd.client(%{http_method: "post", path: path, body: body}, options)
     Tesla.post(client, path, set_transfer_response_body)
   end
+
+
 
 end
