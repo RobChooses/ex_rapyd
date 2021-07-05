@@ -3,10 +3,8 @@ defmodule ExRapyd.Collect.API do
   Elixir wrapper for the Rapyd API - Collect API
   """
 
-  alias ExRapyd.Collect.Checkout
-
   @doc """
-  Issue Bank Account to Wallet
+  Create checkout page
 
   ## Example
 
@@ -19,7 +17,7 @@ defmodule ExRapyd.Collect.API do
                            currency: "GBP",
                            ewallet: "ewallet_xxxx"
                          }
-    iex> ExRapyd.Collect.Checkout.create_checkout_page(checkout_body)
+    iex> ExRapyd.Collect.API.create_checkout_page(checkout_body)
     {:ok, response}
 
   """
@@ -28,5 +26,24 @@ defmodule ExRapyd.Collect.API do
     body = Jason.encode!(checkout_body)
     client = ExRapyd.client(%{http_method: "post", path: path, body: body}, options)
     Tesla.post(client, path, checkout_body)
+  end
+
+  @doc """
+  Create a Payment
+
+  ## Example
+
+    iex> payment_body = %{
+
+                         }
+    iex> ExRapyd.Collect.API.create_payment(payment_body)
+    {:ok, response}
+
+  """
+  def create_payment(payment_body, options \\ []) do
+    path = "/payments"
+    body = Jason.encode!(payment_body)
+    client = ExRapyd.client(%{http_method: "post", path: path, body: body}, options)
+    Tesla.post(client, path, payment_body)
   end
 end
