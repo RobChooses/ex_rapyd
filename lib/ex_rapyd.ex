@@ -1,6 +1,6 @@
 defmodule ExRapyd do
   @moduledoc """
-  Elixir wrapper for the Rapyds API
+  Elixir wrapper for the Rapyd API
   """
 
   @doc """
