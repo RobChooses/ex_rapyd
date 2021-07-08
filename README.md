@@ -1,6 +1,6 @@
 # ExRapyd
 
-Elixir wrapper for the [Rapyd API](https://docs.rapyd.net/build-with-rapyd/reference/rapyd-overview)
+Elixir wrapper for the [Rapyd APIs](https://docs.rapyd.net/build-with-rapyd/reference/rapyd-overview).
 
 ## Coverage
 
