@@ -1,6 +1,13 @@
 # ExRapyd
 
-**TODO: Add description**
+Elixir wrapper for the [Rapyd API](https://docs.rapyd.net/build-with-rapyd/reference/rapyd-overview)
+
+## Coverage
+
+Initial coverage of APIs within the following. More to be added later.
+* Wallet
+* Collect
+* Issuing
 
 ## Installation
 
@@ -14,8 +21,4 @@ def deps do
   ]
 end
 ```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/ex_rapyd](https://hexdocs.pm/ex_rapyd).
 
